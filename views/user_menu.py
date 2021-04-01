@@ -1,10 +1,12 @@
 import sys
+from entities.student import Student
 
 
 class UserMenu:
     __userinput = []
 
     def __init__(self):
+        self.__student = Student()
 
         # user choice menu
         self.choices = {
