@@ -22,6 +22,33 @@ class UserMenu:
         self.__userinput.append("Is completed(y/n): ")
         self.__userinput.append("Enter Note ID: ")
 
+    # Print main menu.
+    def main_menu(self):
+        print("""
+            1. Add New Note
+            2. Select Note
+            3. Update Note
+            4. Delete Note
+            5. View Summary
+            6. Exit
+        """)
+
+    # Display user menu and ask response from user.
+    def display_menu(self):
+
+        while True:
+            self.main_menu()
+
+            choice = input("Enter the menu ID: ")
+
+            action = self.choices.get(choice)
+
+            if action:
+                action()
+
+            else:
+                print("{0} is invalid".format(choice))
+
     def add_student(self):
         print('Add Student')
 
