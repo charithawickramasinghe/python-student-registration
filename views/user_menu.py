@@ -28,10 +28,10 @@ class UserMenu:
     # Print main menu.
     def main_menu(self):
         print("""
-            1. Add New Note
-            2. Select Note
-            3. Update Note
-            4. Delete Note
+            1. Add New Student
+            2. Select Student
+            3. Update Student
+            4. Delete Student
             5. View Summary
             6. Exit
         """)
