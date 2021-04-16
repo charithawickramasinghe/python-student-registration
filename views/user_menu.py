@@ -21,8 +21,9 @@ class UserMenu:
         # user input text
         self.__userinput.append("Enter Student Name: ")
         self.__userinput.append("Enter Student Address: ")
+        self.__userinput.append("Enter Student Age: ")
         self.__userinput.append("Is completed(y/n): ")
-        self.__userinput.append("Enter Note ID: ")
+        self.__userinput.append("Enter Student Id: ")
 
     # Print main menu.
     def main_menu(self):
@@ -51,11 +52,29 @@ class UserMenu:
             else:
                 print("{0} is invalid".format(choice))
 
+    # take student details from the user.
     def add_student(self):
-        print('Add Student')
+        print('\n----- Add Student -----\n')
+        self.__student.set_name(input(self.__userinput[0]))
+        self.__student.set_address(input(self.__userinput[1]))
+        self.__student.set_age(input(self.__userinput[2]))
+        self.__student.set_completed(input(self.__userinput[3]))
 
+        # self.__action_ctrl.add_note(self.__note)
+
+    # display student data by Id.
     def select_student(self):
-        print('Select Student')
+        print('\n----- Select Student -----\n')
+        self.__student.id = input(self.__userinput[3])
+
+        if int(self.__student.id) > 0:
+            index = self.__file_ctrl.check_availability(self.__student.id)
+            if index > -1:
+                self.__action_ctrl.select_note(self.__student)
+            else:
+                print('Invalid Student Id.\n')
+        else:
+            print('Invalid Student id.\n')
 
     def update_student(self):
         print('Update Student')
