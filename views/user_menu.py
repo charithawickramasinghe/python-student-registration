@@ -19,8 +19,8 @@ class UserMenu:
         }
 
         # user input text
-        self.__userinput.append("Enter Note Title: ")
-        self.__userinput.append("Enter Note Text: ")
+        self.__userinput.append("Enter Student Name: ")
+        self.__userinput.append("Enter Student Address: ")
         self.__userinput.append("Is completed(y/n): ")
         self.__userinput.append("Enter Note ID: ")
 
