@@ -1,12 +1,14 @@
 import sys
 from entities.student import Student
+from handlers.action import Action
 
 
 class UserMenu:
-    __userinput = []
 
     def __init__(self):
+        self.__userinput = []
         self.__student = Student()
+        self.__action = Action()
 
         # user choice menu
         self.choices = {
@@ -60,7 +62,7 @@ class UserMenu:
         self.__student.set_age(input(self.__userinput[2]))
         self.__student.set_completed(input(self.__userinput[3]))
 
-        # self.__action_ctrl.add_note(self.__note)
+        self.__action.add_note(self.__note)
 
     # display student data by Id.
     def select_student(self):
@@ -68,9 +70,9 @@ class UserMenu:
         self.__student.id = input(self.__userinput[3])
 
         if int(self.__student.id) > 0:
-            index = self.__file_ctrl.check_availability(self.__student.id)
+            index = self.__action.check_availability(self.__student.id)
             if index > -1:
-                self.__action_ctrl.select_note(self.__student)
+                self.__action.select_note(self.__student)
             else:
                 print('Invalid Student Id.\n')
         else:
