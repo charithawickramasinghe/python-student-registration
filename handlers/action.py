@@ -7,14 +7,18 @@ class Action:
     def __init__(self):
         self.__student = Student()
 
-    # generate unique number and save the student.
-    def add_note(self, note):
-        note.id = self.__file_ctrl.get_index()
-        note.completed = self.check_boolean(note.completed)
-        if str(note.completed) == 'True':
-            note.completed_date = datetime.today().strftime('%Y-%m-%d')
+    # generate a unique number.
+    def generate_index(self):
+        return self.__file_ctrl.get_index()
 
-        note.created_date = datetime.today().strftime('%Y-%m-%d')
-        record = [str(note.id) + ",", str(note.title) + ",", str(note.text) + ",", str(note.created_date) + ",",
-                  str(note.completed) + ",", str(note.completed_date) + "\n"]
+    #  save the student details with a unique number.
+    def add_note(self, student):
+        student.id = self.generate_index()
+        student.completed = self.check_boolean(student.completed)
+        if str(student.completed) == 'True':
+            student.completed_date = datetime.today().strftime('%Y-%m-%d')
+
+        student.created_date = datetime.today().strftime('%Y-%m-%d')
+        record = [str(student.id) + ",", str(student.title) + ",", str(student.text) + ",", str(student.created_date) + ",",
+                  str(student.completed) + ",", str(student.completed_date) + "\n"]
         self.__file_ctrl.save_data(record)
